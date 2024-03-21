@@ -1,14 +1,13 @@
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        newList = []
-        nums_table = {}
+        count = {}
+        for num in nums1:
+            count[num] = count.get(num,0)+1
         
-        for x in nums1:
-            nums_table[x] = nums_table.get(x,0) + 1
-        
+        temp = []
         for x in nums2:
-            if x in nums_table and nums_table[x]>0:
-                nums_table[x] = nums_table.get(x,0)-1
-                newList.append(x)
-        
-        return newList;
+            if x in count and count[x]>0:
+                count[x] = count.get(x,0)-1
+                temp.append(x)
+                
+        return temp
