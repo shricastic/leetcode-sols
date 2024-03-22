@@ -5,20 +5,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def inorder(self, root : Optional[TreeNode], nodeList: List[int]) -> List[int]:
-        if(root==None): return nodeList
-        
-        self.inorder(root.left, nodeList)
-        nodeList.append(root.val)
-        self.inorder(root.right, nodeList)
-        
-        return nodeList
-    
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        nodeList = self.inorder(root ,[])
+        return self.validate(root, float('-inf'), float('inf'))
         
-        for x in range(1,len(nodeList)):
-            if(nodeList[x]<=nodeList[x-1]):
-                return False
-        return True
+        
+    def validate(self, root: Optional[TreeNode], min_val: float, max_val: float)->bool:
+        if root==None: return True
+        
+        if root.val <= min_val or root.val >= max_val:
+            return False
+        
+        return self.validate(root.right, root.val, max_val) and self.validate(root.left, min_val, root.val)
+        
+
+        
+        
         
