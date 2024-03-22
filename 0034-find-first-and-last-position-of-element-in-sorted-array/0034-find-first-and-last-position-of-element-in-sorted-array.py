@@ -1,15 +1,42 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        res = [-1,-1]
+        fo, lo = -1, -1
         
-        for num in range(len(nums)):
-            if target == nums[num]:
-                if res[0]==-1:
-                    res[0]=num
-                    res[1]=num
+        def first(x):
+            nonlocal fo
+            fi, li = 0, len(nums)-1
+            
+            while fi<=li:
+                mid = (fi+li)//2
+                
+                if x<nums[mid]:
+                    li=mid-1
+                elif x>nums[mid]:
+                    fi=mid+1
                 else:
-                    res[1]=num
+                    if fo==-1 or fo>mid:
+                        fo=mid
+                    li = mid-1
         
-        return res
-                        
+        def last(x):
+            nonlocal lo
+            fi, li = 0, len(nums)-1
+            
+            while fi<=li:
+                mid = (fi+li)//2
+                
+                if x<nums[mid]:
+                    li=mid-1
+                elif x>nums[mid]:
+                    fi=mid+1
+                else:
+                    if lo==-1 or lo<mid:
+                        lo=mid
+                    fi = mid+1
         
+        first(target)
+        last(target)
+        
+        return [fo, lo] 
+            
+            
