@@ -4,8 +4,7 @@ class Solution {
         
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
-                int lastIndex = map.get(nums[i]);
-                int diff = i - lastIndex;
+                int diff = i - map.get(nums[i]);
                 if (diff <= k) {
                     return true;
                 }
