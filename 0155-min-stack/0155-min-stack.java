@@ -14,19 +14,17 @@ class MinStack {
     }
     
     public void pop() {
-        if(!st1.isEmpty()) {
-            if(st1.peek().equals(st2.peek())) st2.pop();
-            st1.pop();
-        }
+        if(st1.peek().equals(st2.peek())) st2.pop();
+        st1.pop();  
     }
     
     public int top() {
         if(!st1.isEmpty()) return st1.peek();
-        return -1; // or throw an exception indicating stack is empty
+        return -1; 
     }
     
     public int getMin() {
         if(!st2.isEmpty()) return st2.peek();
-        return -1; // or throw an exception indicating stack is empty
+        return -1; 
     }
 }
