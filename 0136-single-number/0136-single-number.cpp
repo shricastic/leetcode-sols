@@ -1,16 +1,12 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        unordered_set<int> set;
+        int res = 0; 
         
-        for(int i : nums){
-            if(set.find(i) != set.end()){
-                set.erase(i);
-            } else{
-                set.insert(i);    
-            }
+        for(int num : nums){
+            res = res^num;
         }
         
-        return *set.begin();
+        return res;
     }
 };
