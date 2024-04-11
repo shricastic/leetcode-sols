@@ -4,17 +4,11 @@ public:
         unordered_map<char, int> map; 
         
         for(int i=0; i<s.size() ; i++){
-            if(map.contains(s[i])){
-                map[s[i]] = map[s[i]]+1;
-            } else{
-                map[s[i]] = 1;
-            }
+            map[s[i]]++;
         }
         
         for(int i=0 ; i<s.size() ; i++){
-            if(map[s[i]]==1){
-                return i;
-            }
+            if(map[s[i]]==1) return i;
         }
         
         return -1;
