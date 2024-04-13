@@ -5,7 +5,7 @@ public:
         vector<int> res;
         
         for (int i = 1; i <= nums.size(); ++i) {
-            if (numSet.find(i) == numSet.end()) {
+            if (!numSet.contains(i)) {
                 res.push_back(i);
             }
         }
