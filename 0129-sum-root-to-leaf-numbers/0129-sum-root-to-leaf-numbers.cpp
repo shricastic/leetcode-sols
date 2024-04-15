@@ -20,7 +20,6 @@ private:
         pathSum = pathSum * 10 + root->val;
         
         if (root->left == nullptr && root->right == nullptr) {
-            // Add the sum of the current path to the total sum
             totalSum += pathSum;
             return;
         }
