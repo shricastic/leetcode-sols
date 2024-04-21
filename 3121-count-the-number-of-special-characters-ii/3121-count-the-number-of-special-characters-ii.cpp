@@ -19,11 +19,8 @@ public:
         
         for(auto entry : lower){
             char c = entry.first;
-            int idx = entry.second;
-            char uc = toupper(c);
-            int uidx = upper[uc];
-            
-            if(idx < uidx){
+           
+            if(lower[c] < upper[toupper(c)]){
                 cnt++;
             }
         }
