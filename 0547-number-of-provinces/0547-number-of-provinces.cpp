@@ -8,7 +8,6 @@ private:
                 dfs(u, matrix, vis);
             }
         }
-        
     }
     
 public:
