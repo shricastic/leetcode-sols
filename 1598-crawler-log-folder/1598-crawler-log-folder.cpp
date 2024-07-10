@@ -1,18 +1,19 @@
 class Solution {
 public:
     int minOperations(vector<string>& logs) {
-        stack<string> st;
+        int depth = 0;
         
         for(string log : logs){
             if(log == "../"){
-                if(!st.empty()) st.pop();
+                depth--;
+                if(depth<0) depth = 0;
             } else if(log == "./"){
                 continue;
             } else{
-                st.push(log);
+                depth++;
             }
         }
         
-        return st.size();
+        return depth;
     }
 };
