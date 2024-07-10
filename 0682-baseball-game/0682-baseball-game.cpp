@@ -7,23 +7,15 @@ public:
             if(op == "C"){
                 if(score.size()>0) score.pop_back();
             } else if(op == "+"){
-                if(score.size()>=2){
-                  int l = score[score.size()-1], sl = score[score.size()-2];                                                 score.push_back(l+sl);
-                } 
+                if(score.size()>=2) score.push_back(score[score.size()-1] + score[score.size()-2]);
+                
             } else if(op == "D"){
-                if(score.size()>0) {
-                    int l = (int) score[score.size()-1];
-                    score.push_back(l*2);
-                }
+                if(score.size()>0) score.push_back(score[score.size()-1]*2);
             } else{
-                int tmp = stoi(op);
-                score.push_back(tmp);
+                score.push_back(stoi(op));
             }
         }
-        
-        int res = 0;
-        for(int points : score) res += points;
-        
-        return res;
+    
+        return accumulate(score.begin(), score.end(), 0);
     }
 };
