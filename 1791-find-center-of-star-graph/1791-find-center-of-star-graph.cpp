@@ -4,7 +4,7 @@ public:
         int n = edges.size() + 1; 
         vector<int> cnt(n + 1, 0);
 
-        for (const auto& edge : edges) {
+        for (auto edge : edges) {
             cnt[edge[0]]++;
             cnt[edge[1]]++;
         }
