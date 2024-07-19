@@ -23,7 +23,7 @@ public:
             
             for(auto [rd, cd] : directions){
                 int nr = rd+r, nc = cd+c ; 
-                
+				
                 if(nr>=0 and nr<row and nc>=0 and nc<col and grid[nr][nc]==1){
                     grid[nr][nc] = 0;
                     q.push({nr, nc});
