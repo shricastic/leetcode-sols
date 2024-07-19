@@ -5,7 +5,7 @@ private:
         return arr[0];
     }
     
-    bool ismax(vector<vector<int>> matrix, int col, int min){
+    bool ismax(vector<vector<int>>& matrix, int col, int min){
         for(int i=0 ; i<matrix.size() ; i++){
             if(matrix[i][col]>min){
                 return false;
