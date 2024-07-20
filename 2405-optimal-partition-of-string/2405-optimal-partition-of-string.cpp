@@ -1,15 +1,15 @@
 class Solution {
 public:
     int partitionString(string s) {
-        unordered_set<char> set;
+        vector<bool> charmap(26, false);
         int res = 1;
         
         for(char c : s){
-            if(set.count(c)>0){
+            if(charmap[c-'a']==true){
                 res++;
-                set.clear();
+                fill(charmap.begin(), charmap.end(), false);
             }  
-            set.insert(c);
+            charmap[c-'a'] = true;
         }
         
         return res;
