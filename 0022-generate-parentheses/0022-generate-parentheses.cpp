@@ -1,19 +1,19 @@
 class Solution {
 public:
-    vector<string>result;
+    vector<string> res;
     
-    void helper(int open,int close,int n,string current)
-    {
-        if(current.length()==n*2)
-        {
-            result.push_back(current);
+    void helper(int op, int cp, int n, string cs){
+        if(cs.size() == n*2){
+            res.push_back(cs);
             return;
         }
-        if(open<n)  helper(open+1,close,n,current+"(");
-        if(close<open)  helper(open,close+1,n,current+")");
+        
+        if(op<n) helper(op+1, cp, n, cs+'(');
+        if(cp<op) helper(op, cp+1, n, cs+')');
     }
+    
     vector<string> generateParenthesis(int n) {
-        helper(0,0,n,"");
-        return result;
+        helper(0, 0, n, "");
+        return res;
     }
 };
