@@ -1,22 +1,13 @@
 class Solution {
 public:
-    vector<string> sortPeople(vector<string>& names, vector<int>& heights) { 
-        vector<int> ht = heights;
-        sort(ht.begin(), ht.end(), greater<int>());
+    vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
+        priority_queue<pair<int, string>> pq; 
         
-        int maxht = *max_element(heights.begin(), heights.end());
-        
-        vector<string> intmap(maxht+1);
-        
-        for(int i=0 ; i<heights.size() ; i++){
-            intmap[heights[i]] = names[i];
-        }
+        for(int i=0 ; i<names.size() ; i++) pq.push({heights[i], names[i]});
         
         vector<string> res;
         
-        for(int height : ht){
-            res.push_back(intmap[height]);
-        }
+        while(!pq.empty()) res.push_back(pq.top().second), pq.pop();
         
         return res;
     }
