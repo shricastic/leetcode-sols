@@ -1,24 +1,23 @@
 class Solution {
 public:
     vector<string> sortPeople(vector<string>& names, vector<int>& heights) { 
-        vector<string> res;
-        int n = names.size();
+        vector<int> ht = heights;
+        sort(ht.begin(), ht.end(), greater<int>());
         
-        while(res.size()!=n){
-            int max = 0, idx = 0;
-            
-            for(int i = 0 ; i<names.size() ; i++){
-                if(max<heights[i]){
-                    max = heights[i];
-                    idx = i;
-                }
-            }
-            
-            res.push_back(names[idx]);
-            names.erase(names.begin()+idx);
-            heights.erase(heights.begin()+idx);
+        int maxht = *max_element(heights.begin(), heights.end());
+        
+        vector<string> intmap(maxht+1);
+        
+        for(int i=0 ; i<heights.size() ; i++){
+            intmap[heights[i]] = names[i];
         }
-    
+        
+        vector<string> res;
+        
+        for(int height : ht){
+            res.push_back(intmap[height]);
+        }
+        
         return res;
     }
 };
