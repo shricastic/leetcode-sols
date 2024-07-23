@@ -1,13 +1,16 @@
 class Solution {
 public:
     vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
-        priority_queue<pair<int, string>> pq; 
+        vector<pair<int, string>> pv;
         
-        for(int i=0 ; i<names.size() ; i++) pq.push({heights[i], names[i]});
+        for(int i=0 ; i<names.size() ; i++){
+            pv.push_back({heights[i], names[i]});
+        }
+        
+        sort(pv.rbegin(), pv.rend());
         
         vector<string> res;
-        
-        while(!pq.empty()) res.push_back(pq.top().second), pq.pop();
+        for(auto pair : pv) res.push_back(pair.second);
         
         return res;
     }
