@@ -1,14 +1,12 @@
 class Solution {
 public:
     bool canAliceWin(vector<int>& nums) {
-        int sd = 0, dd = 0;
+        int sum=0;
         
         for(int i : nums){
-            if(i<10) sd+=i;
-            else if(i>9 and i<100) dd+=i;
+            i<10? sum+=i : sum-=i;
         }
         
-        if(sd==dd) return false;
-        return true;        
+        return sum==0 ? false : true;        
     }
 };
