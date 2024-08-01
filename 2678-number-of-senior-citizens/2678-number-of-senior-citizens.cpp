@@ -4,11 +4,7 @@ public:
         int cnt = 0;
         
         for(string s : details){
-            int i = s[11] - '0';
-            int j = s[12] - '0';
-            int age = (i*10) + j;
-            
-            
+            int age = ((s[11] - '0')*10) + (s[12] - '0');
             if(age > 60) cnt++;
         }
         
