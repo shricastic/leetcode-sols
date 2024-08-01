@@ -4,6 +4,6 @@ class Solution:
         
         for people in details:
             if(int(people[11:13]) > 60): 
-                cnt = cnt+1
+                cnt += 1
         
         return cnt
