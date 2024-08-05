@@ -6,10 +6,7 @@ public:
         
         for(string s : words1) map1[s]++;
         for(string s : words2) map2[s]++;
-        
-        for(string s : words1){
-            if(map1[s]==1 && map2[s]==1) res++;
-        }
+        for(string s : words1) if(map1[s]==1 && map2[s]==1) res++;
         
         return res;
     }
