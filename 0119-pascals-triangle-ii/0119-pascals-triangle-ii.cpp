@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> getRow(int rowIndex) {
-        vector<vector<int>> dp(rowIndex+2);
+        vector<vector<int>> dp(rowIndex+1);
         dp[0] = {1};
         
         for(int i=1 ; i<rowIndex+1 ; i++){
