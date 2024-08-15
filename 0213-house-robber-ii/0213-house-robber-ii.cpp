@@ -13,10 +13,8 @@ private:
     }
 public:
     int rob(vector<int>& nums) {
-        //house robber II
         if(nums.size() == 1) return nums[0];
         if(nums.size() == 2) return max(nums[0], nums[1]);
-        
         
         vector<int> dp1(nums.size(), -1), dp2(nums.size(), -1);
         return max(steal(nums, dp1, 1, nums.size()-1), steal(nums, dp2, 0, nums.size()-2));
