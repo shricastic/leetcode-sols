@@ -23,14 +23,8 @@ private:
     vector<int> res;
     
     void traverse(Node* root){
-        if(root == nullptr) return;
-        
-        vector<Node*> childs = root->children;
-        
-        for(int i=0 ; i<childs.size() ; i++){
-            traverse(childs[i]);
-        }
-        
+        if(root == nullptr) return;        
+        for(auto child : root->children) traverse(child);
         res.push_back(root->val);
     }
     
