@@ -25,8 +25,7 @@ private:
     void traverse(Node* root){
         if(root == nullptr) return;
         res.push_back(root->val);
-        
-        for(int i=0 ; i<root->children.size() ; i++) traverse(root->children[i]);
+        for(auto child : root->children) traverse(child);
     }
     
 public:
