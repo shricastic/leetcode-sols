@@ -9,7 +9,7 @@ private:
         }
         
         for (int i = index; i < vowels.size(); i++) {
-            lexiString(n, i, len + 1, cnt);
+            lexiString(n, i, len + 1, cnt);     
         }
     }
 
