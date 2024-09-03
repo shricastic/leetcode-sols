@@ -1,14 +1,22 @@
 class Solution {
- public:
-  int longestValidParentheses(string s) {
-    const string s2 = ")" + s;
-    
-    vector<int> dp(s2.length());
-
-    for (int i = 1; i < s2.length(); ++i)
-      if (s2[i] == ')' && s2[i - dp[i - 1] - 1] == '(')
-        dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2;
-
-    return ranges::max(dp);
-  }
+public:
+    int longestValidParentheses(string s) {
+        int left = 0, right = 0, maxl = 0;
+        
+        for(char c : s){
+            c=='(' ? left++ : right++;           
+            if(left==right) maxl = max(maxl, left*2);
+            if(left<right) left = 0, right = 0; 
+        }
+        
+        left = 0, right = 0;
+        for(int i=s.length()-1 ; i>=0 ; i--){
+            char c = s[i];
+            c=='(' ? left++ : right++;           
+            if(left==right) maxl = max(maxl, left*2);
+            if(left>right) left = 0, right = 0; 
+        }
+        
+        return maxl;
+    }
 };
