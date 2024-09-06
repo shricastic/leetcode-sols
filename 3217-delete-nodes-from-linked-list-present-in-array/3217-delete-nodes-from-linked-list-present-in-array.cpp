@@ -13,19 +13,16 @@ public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
         unordered_set<int> set(nums.begin(), nums.end());
         
-        ListNode* dummy = new ListNode(0);
-        ListNode* cur = dummy;
+        ListNode dummy(0, head);
+        ListNode* cur = &dummy;
         
-        while(head!= nullptr){
-            if(set.count(head->val) == 0){
-                ListNode* tmp = new ListNode(head->val);
-                cur->next = tmp;
+        while(cur->next != nullptr){
+            if(set.count(cur->next->val)>0)
+                cur->next = cur->next->next;
+            else
                 cur = cur->next;
-            }
-            
-            head = head->next;
         }
         
-        return dummy->next;
+        return dummy.next;        
     }
 };
