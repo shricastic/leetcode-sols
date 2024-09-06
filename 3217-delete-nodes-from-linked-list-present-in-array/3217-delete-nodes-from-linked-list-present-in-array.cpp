@@ -16,12 +16,12 @@ public:
         ListNode dummy(0, head);
         ListNode* cur = &dummy;
         
-        while(cur->next != nullptr){
+        while(cur->next != nullptr)
             if(set.count(cur->next->val)>0)
                 cur->next = cur->next->next;
             else
                 cur = cur->next;
-        }
+        
         
         return dummy.next;        
     }
