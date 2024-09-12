@@ -2,7 +2,6 @@ class Solution {
 private:
     bool isConsistent(unordered_set<string> &set, string s){
         for(char c : s) if(set.count(to_string(c)) == 0) return false;
-        
         return true;
     }
     
