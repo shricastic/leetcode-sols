@@ -7,12 +7,11 @@ public:
 
         for(int i = 0; i<s.length(); i++){
             const int index = vowels.find(s[i]);
-            if(index != -1){
-                prefix ^= 1<<index;
-            }
-            if(!mp.contains(prefix)){
-                mp[prefix] = i;
-            }
+            
+            if(index != -1)prefix ^= 1<<index;
+            
+            if(!mp.contains(prefix)) mp[prefix] = i;
+            
             ans = max(ans, i-mp[prefix]);
         }
         return ans;
