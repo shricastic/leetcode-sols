@@ -1,16 +1,19 @@
 class Solution {
 public:
     int minLength(string s) {
-        int i = 0;
-        while (i < s.length() - 1) {
-            if(s.length()<2) break;
-            if ((s[i] == 'A' && s[i + 1] == 'B') || (s[i] == 'C' && s[i + 1] == 'D')) {
-                s.erase(i, 2);
-                i = max(0, i - 1);
-            } else {
-                i++;
+        string stk = "";
+        
+        for(int i=0 ; i<s.size() ; i++){
+            if(stk.empty()) stk+=s[i];
+            else{
+                if((stk.back()=='A' && s[i]=='B') || (stk.back()=='C' && s[i]=='D')){
+                    stk.pop_back();
+                } else{
+                    stk += s[i];
+                }
             }
         }
-        return s.length();
+                   
+        return stk.size();
     }
 };
