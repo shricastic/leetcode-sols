@@ -4,11 +4,7 @@ public:
         int open = 0, close = 0;
         
         for(char c : s){
-            if(c=='(') open++;
-            else{
-                if(open>0) open--;
-                else close++;
-            }
+            c=='(' ? open++ : open>0 ? open-- : close++;
         }
         
         return open+close;
