@@ -5,14 +5,14 @@ impl Solution {
         let length = nums.len();
         let mut res = vec![-1; length - k as usize + 1]; 
 
-        for start in 0..=length - k as usize {
+        for i in 0..=length - k as usize {
             let mut inc_sorted = true;
 
-            for j in start..start + k as usize - 1 {
+            for j in i..i + k as usize - 1 {
                 if nums[j+1] != nums[j]+1 { inc_sorted = false; break; }
             }
 
-            if inc_sorted { res[start] = nums[start + k as usize - 1]; }
+            if inc_sorted { res[i] = nums[i + k as usize - 1]; }
         }
 
         res
