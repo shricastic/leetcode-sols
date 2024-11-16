@@ -7,8 +7,10 @@ impl Solution {
         
         for &i in &nums {
             if let Some(cnt) = map.get_mut(&(k-i)) {
-                if *cnt>0 { res+=1; *cnt-=1; }
-                else { *map.entry(i).or_insert(0) += 1 }
+                if *cnt>0 { 
+                    res+=1; *cnt-=1; 
+                    if *cnt == 0 { map.remove(&(k - i)); }
+                }
             } else {
                 *map.entry(i).or_insert(0) += 1;
             }
