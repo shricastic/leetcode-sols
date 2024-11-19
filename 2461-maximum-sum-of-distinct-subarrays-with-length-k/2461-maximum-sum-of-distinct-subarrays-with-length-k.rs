@@ -5,7 +5,8 @@ impl Solution {
         for (i, &n) in nums.iter().enumerate() {
             while i - j + 1 > k as usize || f[n as usize] > 0 {
                 sum -= nums[j] as i64; 
-                f[nums[j] as usize] -= 1; j += 1
+                f[nums[j] as usize] -= 1; 
+                j += 1;
             }
             
             sum += n as i64; 
