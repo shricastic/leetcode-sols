@@ -11,8 +11,8 @@ impl Solution {
         }
         
         for i in 1..=n{
-            if(set.contains(&(i as i32)) || 
-                (sum + i as i32)>max_sum){ continue; }
+            if set.contains(&(i as i32)) { continue; } 
+            if (sum + i as i32) > max_sum { break; }
             sum+=i as i32;
             cnt+=1;
         }
