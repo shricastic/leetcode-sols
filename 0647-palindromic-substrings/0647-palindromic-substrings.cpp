@@ -1,26 +1,23 @@
 class Solution {
-private:
-    string s;
-    int dp[1001][1001];
-    int solve(int i, int j){
-        if(dp[i][j] != -1) return dp[i][j];
-        int l = i, k = j;
-        bool flag = true;
-        while(i<=j){
-            if(s[i]!=s[j]) {flag = false; break;}
-            i++, j--;
-        }
-        return dp[l][k] = flag? 1 : 0;
-    }
 public:
     int countSubstrings(string s) {
-        this-> s = s;
-        int cnt = 0;
-        memset(dp, -1, sizeof(dp));
-        for(int i=0; i<s.size() ; i++){
-            for(int j=i; j<s.size() ; j++) cnt+=solve(i, j);
+       int n = s.size(), cnt = 0; 
+
+       vector<vector<bool>> dp(n+1, vector<bool>(n, false)); 
+       for(int i=0 ; i<n ; i++) dp[i][i] = true, cnt++;
+
+       for(int L=2 ; L<=n ; L++){
+        for(int i=0; i+L-1<n ; i++){
+            int j = i+L-1;
+            if (s[i] == s[j]) {
+                if (L == 2 || dp[i + 1][j - 1]) {
+                    dp[i][j] = true;
+                    cnt++;
+                }
+            }
         }
-        
+       }
+
         return cnt;
     }
 };
