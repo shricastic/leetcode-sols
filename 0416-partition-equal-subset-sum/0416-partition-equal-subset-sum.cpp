@@ -1,25 +1,23 @@
 class Solution {
+private:
+    int dp[201][20001];
+    bool solve(vector<int> &n, int i, int sum){
+        if(sum == 0) return true;
+        if(i>=n.size()) return false;
+        if(dp[i][sum] != -1) return dp[i][sum];
+
+
+        int take = n[i]<=sum? solve(n, i+1, sum-n[i]) : false;
+        int skip = solve(n, i+1, sum);
+
+        return dp[i][sum] = take || skip;
+    }
 public:
     bool canPartition(vector<int>& nums) {
-        int sum = accumulate(nums.begin(), nums.end(), 0);
-        
-        if(sum %2 != 0) return false;
-        
-        int n = nums.size(), target = (sum/2); 
-        vector<vector<bool>> dp(n+1, vector<bool>(target+1, false));
-        
-        dp[0][0] = true;
-        
-        for(int i=1 ; i<=n ; i++){
-            for(int j=1 ; j<=target ; j++){
-                dp[i][j] = dp[i-1][j];
-                
-                if(j >= nums[i-1]){
-                    dp[i][j] = dp[i][j] || dp[i-1][j-nums[i-1]];
-                }
-            }
-        }
-        
-        return dp[n][target];
+       int sum = accumulate(nums.begin(), nums.end(), 0);
+       if(sum%2 != 0) return false;  
+       memset(dp, -1, sizeof(dp));
+
+       return solve(nums, 0, sum/2);
     }
 };
