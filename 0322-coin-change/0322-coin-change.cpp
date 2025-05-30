@@ -1,11 +1,11 @@
 class Solution {
 private:
-    int dp[1001];
+    int dp[10001];
     int solve(vector<int>& c, int amt){
         if (amt == 0) return 0;   
         if (amt < 0) return INT_MAX;
 
-        if(dp[amt] != INT_MAX) return dp[amt];
+        if (dp[amt] != -1) return dp[amt];
     
         int ways = INT_MAX;
         for (int i = 0; i < c.size(); i++) {
@@ -19,7 +19,8 @@ private:
     }
 public:
     int coinChange(vector<int>& coins, int amount) {
-        std::fill(dp, dp + 1001, INT_MAX); 
+        if (amount == 0) return 0;
+        memset(dp, -1, sizeof(dp));        
         int res = solve(coins, amount);  
         return res == INT_MAX ? -1 : res;
     }
