@@ -18,10 +18,6 @@ public:
         for(string &w: words) set.insert(w);
         int maxLen = 0;
 
-        sort(words.begin(), words.end(), [](const string &a, const string &b){
-            return a.size() > b.size();
-        });
-
         for(int i=0 ; i<words.size() ; i++){
             maxLen = max(maxLen, solve(words[i]));
         }
