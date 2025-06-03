@@ -18,9 +18,7 @@ public:
         for(string &w: words) set.insert(w);
         int maxLen = 0;
 
-        for(int i=0 ; i<words.size() ; i++){
-            maxLen = max(maxLen, solve(words[i]));
-        }
+        for(int i=0 ; i<words.size() ; i++) maxLen = max(maxLen, solve(words[i]));
 
         return maxLen;
     }
