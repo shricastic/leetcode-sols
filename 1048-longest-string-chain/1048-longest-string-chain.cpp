@@ -1,14 +1,17 @@
 class Solution {
 private:
     unordered_set<string> set;
+    unordered_map<string, int> map;
     int solve(string s){
+        if (map.find(s) != map.end()) return map[s];
+
         int maxLen = 1;
         for(int i=0 ; i<s.size() ; i++){
             string next = s.substr(0, i) + s.substr(i + 1);
             if(set.find(next) != set.end()) maxLen = max(maxLen, 1 + solve(next));
         } 
 
-        return maxLen;
+        return map[s] = maxLen;
     }
 public:
     int longestStrChain(vector<string>& words) {
