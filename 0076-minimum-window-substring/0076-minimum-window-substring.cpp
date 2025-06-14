@@ -1,38 +1,40 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int n = s.size(), m = t.size(), fi = 0, ei = 0, cnt = t.size(), minLen = INT_MAX;
-        string minStr = "";
-
-        if (n < m) return "";  
-
-        unordered_map<char, int> map;
-        for (char &c : t) map[c]++;  
-
-        while (ei < n) {
-            char c = s[ei];
-
-            if (map.count(c) > 0) {
-                map[c]--;
-                if (map[c] >= 0) cnt--;  
-            }
-
-            while (cnt == 0) {
-                if (ei - fi + 1 < minLen) {
-                    minLen = ei - fi + 1;
-                    minStr = s.substr(fi, minLen);  
-                }
-
-                char lchar = s[fi];
-                if (map.count(lchar) > 0) {
-                    map[lchar]++;
-                    if (map[lchar] > 0) cnt++;  
-                }
-                fi++;  
-            }
-            ei++;  
+        int n = s.length();
+        map<char, int> mp;
+        
+        for(char &ch : t) {
+            mp[ch]++;
         }
-
-        return minStr;  
+        
+        int requiredCount = t.length();
+        int i = 0, j  = 0;
+        int minStart  = 0;
+        int minWindow = INT_MAX;
+        while(j < n) {
+            char ch_j = s[j];
+            if(mp[ch_j] > 0)
+                requiredCount--;
+            
+            mp[ch_j]--;
+            
+            while(requiredCount == 0) { 
+                if(minWindow > j-i+1) {
+                    minWindow = j-i+1;
+                    minStart  = i;
+                }
+                
+                char ch_i = s[i];
+                mp[ch_i]++;
+                if(mp[ch_i] > 0)
+                    requiredCount++;
+                i++;
+            }
+            
+            j++;
+        }
+        
+        return minWindow == INT_MAX ? "" : s.substr(minStart, minWindow);
     }
 };
