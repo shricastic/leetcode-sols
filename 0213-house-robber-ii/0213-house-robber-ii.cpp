@@ -1,22 +1,27 @@
 class Solution {
-private:
-    int steal(vector<int>& nums, vector<int>& dp, int start, int end){
-        if(start > end) return 0;
-        if(dp[start] != -1) return dp[start];
-        
-        int take = nums[start] + steal(nums, dp, start+2, end);
-        int skip = 0 + steal(nums, dp, start+1, end);
-        
-        dp[start] = max(take, skip);
-        
-        return dp[start];
-    }
 public:
+    int dp[101];
+    int solve(vector<int>& nums, int i, int n){
+        if(i>=n) return 0;
+        if(dp[i]!=-1) return dp[i];
+
+        int rob = nums[i] + solve(nums, i+2, n);
+        int skip = solve(nums, i+1, n);
+
+        return dp[i] = max(rob, skip);
+    }
+
     int rob(vector<int>& nums) {
-        if(nums.size() == 1) return nums[0];
-        if(nums.size() == 2) return max(nums[0], nums[1]);
+        int n = nums.size();
+        if(n==0) return 0;
+        if(n==1) return nums[0];
+
+        memset(dp, -1, sizeof(dp));
+        int opt1 = solve(nums, 0, n-1);
+
+        memset(dp, -1, sizeof(dp)); 
+        int opt2 = solve(nums, 1, n);
         
-        vector<int> dp1(nums.size(), -1), dp2(nums.size(), -1);
-        return max(steal(nums, dp1, 1, nums.size()-1), steal(nums, dp2, 0, nums.size()-2));
+        return max(opt1, opt2);
     }
 };
