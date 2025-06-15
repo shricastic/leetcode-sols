@@ -1,26 +1,40 @@
 class MinStack {
+private:
+    std::vector<int> stack;
+    std::vector<int> minStack;  
+
 public:
-    MinStack() {    
+    MinStack() {
     }
-    private:
-        stack<int> s1;    
-        stack<int> s2;   //for containing min value at top 
     
-    public:
-        void push(int x) {
-            s1.push(x);
-            if(s2.empty() || x<=s2.top()) s2.push(x);	    
+    void push(int val) {
+        stack.push_back(val);
+        
+        if(minStack.empty() || val <= minStack.back()) {
+            minStack.push_back(val);
         }
-        void pop() {
-            if(s1.top()==s2.top()) s2.pop();
-            s1.pop();
+    }
+    
+    void pop() {
+        if (stack.empty()) return;
+        
+        int topVal = stack.back();
+        stack.pop_back();
+        
+        if (topVal == minStack.back()) {
+            minStack.pop_back();
         }
-        int top() {
-            return s1.top();
-        }
-        int getMin() {
-            return s2.top();
-        }
+    }
+    
+    int top() {
+        if (stack.empty()) return INT_MIN; 
+        return stack.back();
+    }
+    
+    int getMin() {
+        if (minStack.empty()) return INT_MIN;
+        return minStack.back();  
+    }
 };
 
 /**
