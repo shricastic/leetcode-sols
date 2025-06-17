@@ -5,6 +5,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0056-merge-intervals](https://github.com/shricastic/leetcode-sols/tree/master/0056-merge-intervals) |
+| [0057-insert-interval](https://github.com/shricastic/leetcode-sols/tree/master/0057-insert-interval) |
 | [0215-kth-largest-element-in-an-array](https://github.com/shricastic/leetcode-sols/tree/master/0215-kth-largest-element-in-an-array) |
 | [0347-top-k-frequent-elements](https://github.com/shricastic/leetcode-sols/tree/master/0347-top-k-frequent-elements) |
 | [0373-find-k-pairs-with-smallest-sums](https://github.com/shricastic/leetcode-sols/tree/master/0373-find-k-pairs-with-smallest-sums) |
