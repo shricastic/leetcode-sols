@@ -11,7 +11,6 @@
  */
 class Solution {
 private: 
-    unordered_map<TreeNode*, int> map;
     int maxSum;
     int maxPath(TreeNode* root){
         if(root == nullptr) return 0;
