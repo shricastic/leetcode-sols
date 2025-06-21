@@ -5,6 +5,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0046-permutations](https://github.com/shricastic/leetcode-sols/tree/master/0046-permutations) |
+| [0051-n-queens](https://github.com/shricastic/leetcode-sols/tree/master/0051-n-queens) |
 | [0056-merge-intervals](https://github.com/shricastic/leetcode-sols/tree/master/0056-merge-intervals) |
 | [0057-insert-interval](https://github.com/shricastic/leetcode-sols/tree/master/0057-insert-interval) |
 | [0078-subsets](https://github.com/shricastic/leetcode-sols/tree/master/0078-subsets) |
@@ -65,6 +66,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0046-permutations](https://github.com/shricastic/leetcode-sols/tree/master/0046-permutations) |
+| [0051-n-queens](https://github.com/shricastic/leetcode-sols/tree/master/0051-n-queens) |
 | [0078-subsets](https://github.com/shricastic/leetcode-sols/tree/master/0078-subsets) |
 | [0113-path-sum-ii](https://github.com/shricastic/leetcode-sols/tree/master/0113-path-sum-ii) |
 | [0257-binary-tree-paths](https://github.com/shricastic/leetcode-sols/tree/master/0257-binary-tree-paths) |
