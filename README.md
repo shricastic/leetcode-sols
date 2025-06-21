@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 | [0046-permutations](https://github.com/shricastic/leetcode-sols/tree/master/0046-permutations) |
 | [0056-merge-intervals](https://github.com/shricastic/leetcode-sols/tree/master/0056-merge-intervals) |
 | [0057-insert-interval](https://github.com/shricastic/leetcode-sols/tree/master/0057-insert-interval) |
+| [0078-subsets](https://github.com/shricastic/leetcode-sols/tree/master/0078-subsets) |
 | [0215-kth-largest-element-in-an-array](https://github.com/shricastic/leetcode-sols/tree/master/0215-kth-largest-element-in-an-array) |
 | [0347-top-k-frequent-elements](https://github.com/shricastic/leetcode-sols/tree/master/0347-top-k-frequent-elements) |
 | [0373-find-k-pairs-with-smallest-sums](https://github.com/shricastic/leetcode-sols/tree/master/0373-find-k-pairs-with-smallest-sums) |
@@ -64,6 +65,7 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0046-permutations](https://github.com/shricastic/leetcode-sols/tree/master/0046-permutations) |
+| [0078-subsets](https://github.com/shricastic/leetcode-sols/tree/master/0078-subsets) |
 | [0113-path-sum-ii](https://github.com/shricastic/leetcode-sols/tree/master/0113-path-sum-ii) |
 | [0257-binary-tree-paths](https://github.com/shricastic/leetcode-sols/tree/master/0257-binary-tree-paths) |
 ## Tree
@@ -100,4 +102,8 @@ A collection of LeetCode questions to ace the coding interviews! - Created using
 |  |
 | ------- |
 | [0133-clone-graph](https://github.com/shricastic/leetcode-sols/tree/master/0133-clone-graph) |
+## Bit Manipulation
+|  |
+| ------- |
+| [0078-subsets](https://github.com/shricastic/leetcode-sols/tree/master/0078-subsets) |
 <!---LeetCode Topics End-->
