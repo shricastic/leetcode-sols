@@ -20,24 +20,23 @@ public:
 */
 
 class Solution {
-public:
-Node* clone(Node* node, unordered_map<Node*, Node*>& visited) {
-    if (!node) return nullptr;
+private:
+    unordered_map<Node*, Node*> map;
+    Node* dfs(Node* root){
+        if(root == nullptr) return nullptr;
+        if(map.count(root) != 0) return map[root];
 
-    if (visited.count(node)) return visited[node];
+        Node* newNode = new Node(root->val);
+        map[root] = newNode;
 
-    Node* cloneNode = new Node(node->val);
-    visited[node] = cloneNode; 
+        for(auto n : root->neighbors){
+            newNode->neighbors.push_back(dfs(n));
+        }
 
-    for (Node* neighbor : node->neighbors) {
-        cloneNode->neighbors.push_back(clone(neighbor, visited));
+        return newNode;
     }
-
-    return cloneNode;
-}
-
-Node* cloneGraph(Node* node) {
-    unordered_map<Node*, Node*> visited;
-    return clone(node, visited);
-}
+public:
+    Node* cloneGraph(Node* node) {
+        return dfs(node);
+    }
 };
