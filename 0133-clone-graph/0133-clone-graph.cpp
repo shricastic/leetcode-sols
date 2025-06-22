@@ -20,23 +20,29 @@ public:
 */
 
 class Solution {
-private:
-    unordered_map<Node*, Node*> map;
-    Node* dfs(Node* root){
+public:
+    Node* cloneGraph(Node* root) {
         if(root == nullptr) return nullptr;
-        if(map.count(root) != 0) return map[root];
+
+        unordered_map<Node*, Node*> vis;
+        queue<Node*> q;
 
         Node* newNode = new Node(root->val);
-        map[root] = newNode;
+        q.push(root);
+        vis[root] = newNode;
 
-        for(auto n : root->neighbors){
-            newNode->neighbors.push_back(dfs(n));
+        while(!q.empty()){
+            Node* cur = q.front(); q.pop();
+
+            for(auto n : cur->neighbors){
+                if(vis.find(n) == vis.end()){
+                    vis[n] = new Node(n->val);
+                    q.push(n);
+                }
+                vis[cur]->neighbors.push_back(vis[n]);
+            }
         }
 
         return newNode;
-    }
-public:
-    Node* cloneGraph(Node* node) {
-        return dfs(node);
     }
 };
