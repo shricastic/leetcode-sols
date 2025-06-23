@@ -1,41 +1,30 @@
 class Solution {
-private:
-    vector<int> vis, res;
-    bool cycle = false;
-    void dfs(int node, vector<vector<int>>& adjList){
-        if(cycle || vis[node]!= 0) return;
-
-        vis[node] = 1;
-
-        for(int nbr: adjList[node]){
-            if(vis[nbr] == 1){
-                cycle = true;
-                return;
-            }
-            dfs(nbr, adjList);
-        }
-
-        vis[node] = 2;
-        res.push_back(node);
-    }
-
-
 public:
     vector<int> findOrder(int N, vector<vector<int>>& prerequisites) {
-        vis.resize(N, 0); 
+        vector<int> indeg(N, 0), res;
+        queue<int> q;
+
         vector<vector<int>> adjList(N);
+        for(auto p: prerequisites) adjList[p[1]].push_back(p[0]);
 
-        for(auto p: prerequisites){
-            adjList[p[1]].push_back(p[0]);
+        for(int u=0 ; u<N ; u++){
+            for(int v : adjList[u]) indeg[v]++;
         }
 
-        for(int i=0 ; i<N ; i++){
-            if(vis[i] == 0) dfs(i, adjList);
-            if(cycle) return {};
+        for(int i=0 ; i<N ; i++) if(indeg[i] == 0) q.push(i);
+
+        while(!q.empty()){
+            int cur = q.front(); q.pop();
+
+            for(int nbr : adjList[cur]){
+                indeg[nbr]--;
+                if(indeg[nbr] == 0) q.push(nbr);
+            }
+
+            res.push_back(cur);
         }
 
-        reverse(res.begin(), res.end());
-
-        return res;
+        if(res.size() == N) return res; 
+        return {}; 
     }
 };
