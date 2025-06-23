@@ -3,7 +3,7 @@ private:
     vector<int> vis, res;
     bool cycle = false;
     void dfs(int node, vector<vector<int>>& adjList){
-        if(cycle || vis[node]!=0) return;
+        if(cycle || vis[node]!= 0) return;
 
         vis[node] = 1;
 
@@ -16,7 +16,6 @@ private:
         }
 
         vis[node] = 2;
-
         res.push_back(node);
     }
 
