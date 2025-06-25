@@ -1,45 +1,47 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        int rows = grid.size(), cols = grid[0].size();
-        queue<pair<int, int>> queue;
-        int freshCnt = 0, mins = 0;
-        
-        for(int i = 0 ; i < rows ; i++){
-            for(int j = 0 ; j < cols ; j++){
-                if(grid[i][j] == 2){
-                    queue.push({i, j});
-                } else if(grid[i][j] == 1){
-                    freshCnt++;
+        int r = grid.size(), c = grid[0].size(), mins = 0, fresh=0;
+        if(r == 0) return -1;
+
+        queue<pair<int, int>> q;
+        for(int i = 0; i < r; ++i){
+            for(int j = 0; j < c; ++j){
+                if(grid[i][j] == 2) q.push({i, j});
+                if(grid[i][j] == 1) fresh++;
+            }
+        }
+
+        vector<pair<int, int>> dir = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+        while(!q.empty()){
+            int lsize = q.size();
+            bool rottenThisMin = false;
+
+            while(lsize--){
+                auto [cr, cc] = q.front(); q.pop();
+
+                for(auto [dr, dc]: dir){
+                    int nr = cr+dr, nc = cc+dc;
+
+                    if(nr>=0 && nr<r && nc>=0 && nc<c && grid[nr][nc]==1 && grid[cr][cc]==2){
+                        grid[nr][nc] = 2;
+                        q.push({nr, nc});
+                        fresh--;
+                        rottenThisMin = true;
+                    }
                 }
             }
+
+            if(rottenThisMin) mins++;
         }
         
-        vector<pair<int, int>> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        
-        while(freshCnt>0 && !queue.empty()){
-            int currLevelSize = queue.size();
-            
-            for(int i=0 ; i<currLevelSize ; i++){
-                auto [r, c] = queue.front();
-                queue.pop();
-                
-                for(auto [rd, cd] : directions){
-                    int nr = r + rd;
-                    int nc = c + cd;
-                    
-                    if(nc>=0 && nc<cols && nr>=0 && nr<rows && grid[nr][nc]==1){
-                        grid[nr][nc] = 2;
-                        queue.push({nr, nc});
-                        freshCnt--;
-                    }
-                }                
-                
+        for(int i=0; i<r ; i++){
+            for(int j=0; j<c ; j++){
+                if(grid[i][j]==1) return -1;
             }
-            
-            mins++;
         }
-        
-        return freshCnt==0 ? mins : -1;
+
+        return fresh==0? mins : -1;
     }
 };
