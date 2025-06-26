@@ -17,14 +17,14 @@ public:
         m = b.size();
         n = b[0].size();
 
-        for(int j = 0; j < n; j++) {
-            if(b[0][j] == 'O') dfs(b, 0, j);
-            if(b[m - 1][j] == 'O') dfs(b, m - 1, j);
-        }
-
         for(int i = 0; i < m; i++) {
             if(b[i][0] == 'O') dfs(b, i, 0);
             if(b[i][n - 1] == 'O') dfs(b, i, n - 1);
+        }
+
+        for(int j = 0; j < n; j++) {
+            if(b[0][j] == 'O') dfs(b, 0, j);
+            if(b[m - 1][j] == 'O') dfs(b, m - 1, j);
         }
 
         for(int i = 0; i < m; i++) {
