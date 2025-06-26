@@ -1,35 +1,37 @@
 class Solution {
+private:
+    int m, n;
+    vector<pair<int, int>> dir = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+    
+    void dfs(vector<vector<char>> &b, int i, int j){
+        if(i < 0 || i >= m || j < 0 || j >= n || b[i][j] != 'O') return;
+
+        b[i][j] = 'T';
+        for(auto [r, c]: dir){
+            dfs(b, i + r, j + c);
+        }
+    }
+
 public:
-    void solve(vector<vector<char>>& board) {
-        int rows = board.size(), cols = board[0].size();
-        queue<pair<int, int>> q;
-        
-        for(int row = 0; row<rows ; row++){
-            for(int col = 0 ; col<cols ; col++){
-                if((row == 0 || row==rows-1 || col==0 || col==cols-1) && board[row][col]=='O'){
-                    q.push({row, col});
-                }
+    void solve(vector<vector<char>>& b) {
+        m = b.size();
+        n = b[0].size();
+
+        for(int j = 0; j < n; j++) {
+            if(b[0][j] == 'O') dfs(b, 0, j);
+            if(b[m - 1][j] == 'O') dfs(b, m - 1, j);
+        }
+
+        for(int i = 0; i < m; i++) {
+            if(b[i][0] == 'O') dfs(b, i, 0);
+            if(b[i][n - 1] == 'O') dfs(b, i, n - 1);
+        }
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(b[i][j] == 'O') b[i][j] = 'X';
+                else if(b[i][j] == 'T') b[i][j] = 'O';
             }
         }
-        
-        while(!q.empty()){
-            auto [r, c] = q.front();
-            q.pop();
-            
-            if(r<rows and r>=0 and c<cols and c>=0 and board[r][c]=='O'){
-                board[r][c] = 'T';
-                if(r-1 >= 0) q.push({r-1, c});
-                if(r+1 < rows) q.push({r+1, c});
-                if(c-1 >= 0) q.push({r, c-1});
-                if(c+1 < cols) q.push({r, c+1});
-            }
-        }
-        
-        for(int row = 0; row<rows ; row++){
-            for(int col = 0 ; col<cols ; col++){
-                if(board[row][col]=='O') board[row][col] = 'X';
-                else if(board[row][col] == 'T') board[row][col] = 'O';
-            }
-        }       
     }
 };
